@@ -1,2 +1,5 @@
 hash table implementation in C.
-API: include/hash_table.c
+<br>
+API: include/hash_table.h
+<br>
+course: https://benhoyt.com/writings/hash-table-in-c/
