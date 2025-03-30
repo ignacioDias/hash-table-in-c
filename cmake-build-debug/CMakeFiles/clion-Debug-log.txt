@@ -1,0 +1,5 @@
+/home/idias/clion/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/home/idias/clion/bin/ninja/linux/x64/ninja -G Ninja -S /home/idias/Desktop/uni/computabilidad/hashing -B /home/idias/Desktop/uni/computabilidad/hashing/cmake-build-debug
+-- Configuring done (0.0s)
+CMake Error: CMake can not determine linker language for target: hashing
+-- Generating done (0.0s)
+CMake Generate step failed.  Build files cannot be regenerated correctly.
