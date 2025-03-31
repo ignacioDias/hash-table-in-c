@@ -36,11 +36,12 @@ typedef struct {
 } HashTableIterator;
 
 //creates a Iterator for a given table
-HashTableIterator ht_iterator(HashTable *table);
+HashTableIterator hashTableIteratorGenerator(HashTable *table);
 
 // Move iterator to next item in hash table, update iterator's key
 // and value to current item, and return true. If there are no more
 // items, return false. Don't call ht_set during iteration.
-bool getNextIteration(HashTableIterator* iterator);
+// returns an int as an boolean
+int getNextIteration(HashTableIterator* iterator);
 
 #endif
