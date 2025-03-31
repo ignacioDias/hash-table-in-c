@@ -1,6 +1,7 @@
 #ifndef hash_table_h
 #define hash_table_h
 
+#include <stdint.h>
 #include <stdlib.h>
 
 // Hash table structure: create with ht_create, free with ht_destroy.
@@ -23,6 +24,9 @@ const char* setValue(HashTable* table, const char* key, void* value);
 
 // returns number of items in the table
 size_t lengthOfTable(HashTable* table);
+
+static int tableExpand(HashTable* table);
+static uint64_t hashKeyGenerator(const char* key);
 
 // Hash table iterator: create with ht_iterator, iterate with ht_next.
 typedef struct {

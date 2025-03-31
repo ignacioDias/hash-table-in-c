@@ -1,5 +1,8 @@
-#include "include/hash_table.h"
+#include "../include/hash_table.h"
+
 #include <stdint.h>
+#include <assert.h>
+#include <string.h>
 
 #define INITIAL_CAPACITY 16  // must not be zero
 #define FNV_OFFSET 14695981039346656037UL
@@ -76,21 +79,6 @@ static uint64_t hashKeyGenerator(const char* key) {
     return hash; 
 }
 
-const char* setValue(HashTable* table, const char* key, void* value) {
-    assert(value != NULL);
-    if(value == NULL) {
-        return NULL;
-    }
-    // If length will exceed half of current capacity, expand it.
-    if(table->length >= table->capacity / 2) {
-        if(!tableExpand(table)) {
-            return NULL;
-        }
-    }
-    // Set entry and update length.
-    return setEntry(table->entries, table->capacity, key, value, &table->length);
-}
-
 // Internal function to set an entry (without expanding table).
 static const char* setEntry(HashTableEntry* entries, size_t capacity, const char* key, void* value, size_t* plength) {
     uint64_t hash = hashKeyGenerator(key);
@@ -120,6 +108,21 @@ static const char* setEntry(HashTableEntry* entries, size_t capacity, const char
     entries[index].value = value;
     
     return key;
+}
+
+const char* setValue(HashTable* table, const char* key, void* value) {
+    assert(value != NULL);
+    if(value == NULL) {
+        return NULL;
+    }
+    // If length will exceed half of current capacity, expand it.
+    if(table->length >= table->capacity / 2) {
+        if(!tableExpand(table)) {
+            return NULL;
+        }
+    }
+    // Set entry and update length.
+    return setEntry(table->entries, table->capacity, key, value, &table->length);
 }
 
 //allocates a new entries array of double the current capacity
